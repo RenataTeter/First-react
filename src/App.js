@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Radium, { StyleRoot} from 'radium';
+
 import Person from './PersonA/Person'
 
 class App extends Component {
@@ -92,7 +92,7 @@ style[':hover']={
     }
 
     return (
-      <StyleRoot>
+      
       <div className="App">
       <h1> Hello App</h1>
       <p className={classes.join('')}>Take it easy!!!</p>
@@ -102,10 +102,10 @@ style[':hover']={
       {persons}
      
       </div>
-      </StyleRoot>
+      
     );
   // return React.createElement('div', null, React.createElement('h1',null,  'I\'m a React App'));
   }
 }
 
-export default Radium(App);
+export default App;
