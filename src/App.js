@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import classes from './App.css';
 
 import Person from './PersonA/Person'
 
@@ -36,25 +36,16 @@ this.setState({persons: persons});
 }
 
 
-
-
 togglePersonsHandler = () => {
 const doesShow = this.state.showPersons;
 this.setState({showPersons: !doesShow});
 }
 
   render() {
-    const style ={
-      backgroundColor: 'black',
-      color: 'white',
-      font: 'inherid',
-      border: '1px solid blue',
-      padding: '8px',
-      cursor: 'pointer'
-      
-    }
-
+    
     let persons = null;
+    let btnClass = ' ';
+
     if ( this.state.showPersons ){
 persons = (
    <div>
@@ -68,30 +59,30 @@ persons = (
  }
  )}
   </div> 
-
+  
 );
-style.backgroundColor = 'red';
+btnClass = classes.Red;
 
     };
 
     //  let classes = ['red', 'bold'].join(' ');
-    const classes = [];
+    const assignedClasses = [];
     if(this.state.persons.length <=2){
-      classes.push('red'); // classes = ['red']
+      assignedClasses.push(classes.red); // classes = ['red']
     }
 
     if(this.state.persons.length <= 1){
-      classes.push('bold'); // classes = ['red', bold']
+      assignedClasses.push(classes.bold); // classes = ['red', 'bold']
       
     }
 
     return (
       
-      <div className="App">
+      <div className={classes.App}>
       <h1> Hello App</h1>
-      <p className={classes.join('')}>Take it easy!!!</p>
+      <p className={assignedClasses.join(' ')}>Take it easy!!!</p>
       <button 
-      style= {style}
+     className={btnClass}
       onClick={ this.togglePersonsHandler}>Toggle Persons</button>
       {persons}
      
