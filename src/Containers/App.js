@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import classes from './App.css';
 
-import Person from './PersonA/Person'
+import Persons from '../Components/Persons/Persons';
+import Cockpit from '../Components/Cockpit/Cockpit';
 
 class App extends Component {
 state = {
@@ -44,49 +45,23 @@ this.setState({showPersons: !doesShow});
   render() {
     
     let persons = null;
-    let btnClass = ' ';
 
-    if ( this.state.showPersons ){
-persons = (
-   <div>
-  {this.state.persons.map((person, index) => {
-   return <Person 
-   click={() => this.deletePersonHandler(index)}
-   name={person.name}
-   age={person.age}
-   key={person.id}
-   changed = {(event) => this.nameChangeHandler(event, person.id)}/>
- }
- )}
-  </div> 
-  
-);
-btnClass = classes.Red;
-
-    };
-
-    //  let classes = ['red', 'bold'].join(' ');
-    const assignedClasses = [];
-    if(this.state.persons.length <=2){
-      assignedClasses.push(classes.red); // classes = ['red']
+    if ( this.state.showPersons ) {
+      persons = <Persons 
+     persons={this.state.persons}
+     clicked={this.deletePersonHandler}
+     changed={this.nameChangeHandler} />;
+    
     }
 
-    if(this.state.persons.length <= 1){
-      assignedClasses.push(classes.bold); // classes = ['red', 'bold']
-      
-    }
-
-    return (
-      
+    return (      
       <div className={classes.App}>
-      <h1> Hello App</h1>
-      <p className={assignedClasses.join(' ')}>Take it easy!!!</p>
-      <button 
-     className={btnClass}
-      onClick={ this.togglePersonsHandler}>Toggle Persons</button>
+ <Cockpit 
+showPersons={this.state.showPersons}
+persons={this.state.persons}
+clicked={this.togglePersonsHandler}/>
       {persons}
-     
-      </div>
+           </div>
       
     );
   // return React.createElement('div', null, React.createElement('h1',null,  'I\'m a React App'));
@@ -94,3 +69,5 @@ btnClass = classes.Red;
 }
 
 export default App;
+
+
