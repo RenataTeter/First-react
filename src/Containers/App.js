@@ -5,15 +5,28 @@ import Persons from '../Components/Persons/Persons';
 import Cockpit from '../Components/Cockpit/Cockpit';
 
 class App extends Component {
-state = {
-  persons: [
-    { id: 'gfffhh', name: 'Max', age: 28},
-    {id: 'yryt', name: 'Many', age: 45},
-    {id: 'gfru', name: 'Mirinda', age: 23}
-  ],
-  otherState: 'some other value',
-  showPersons: false
+  constructor(props){
+    super(props);
+    console.log('[App.js] Inside Constructor', props);
+    this.state = {
+
+      persons: [
+        { id: 'gfffhh', name: 'Max', age: 28},
+        {id: 'yryt', name: 'Many', age: 45},
+        {id: 'gfru', name: 'Mirinda', age: 23}
+      ],
+      otherState: 'some other value',
+      showPersons: false
+    };
+  }
+  componentWillMount() {
+    console.log('[App.js] Inside componentWillMount()');
+  }
+componentDidMount(){
+  console.log('[App.js] Inside componentDidMount()');
 }
+
+//state = {}
 
  nameChangeHandler = (event, id) => {
    const personIndex = this.state.persons.findIndex(p => {
@@ -43,7 +56,7 @@ this.setState({showPersons: !doesShow});
 }
 
   render() {
-    
+    console.log('[App.js] Inside render()');
     let persons = null;
 
     if ( this.state.showPersons ) {
@@ -57,6 +70,7 @@ this.setState({showPersons: !doesShow});
     return (      
       <div className={classes.App}>
  <Cockpit 
+ appTitle={this.props.title}
 showPersons={this.state.showPersons}
 persons={this.state.persons}
 clicked={this.togglePersonsHandler}/>
