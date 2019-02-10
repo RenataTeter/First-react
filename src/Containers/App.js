@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import classes from './App.css';
-
 import Persons from '../Components/Persons/Persons';
 import Cockpit from '../Components/Cockpit/Cockpit';
 
 class App extends Component {
   constructor(props){
     super(props);
-    console.log('[App.js] Inside Constructor', props);
-    this.state = {
-
+    console.log('[App.js] Inside Constructor');
+  }
+state = {
       persons: [
         { id: 'gfffhh', name: 'Max', age: 28},
         {id: 'yryt', name: 'Many', age: 45},
@@ -18,15 +17,28 @@ class App extends Component {
       otherState: 'some other value',
       showPersons: false
     };
-  }
-  componentWillMount() {
-    console.log('[App.js] Inside componentWillMount()');
-  }
+ static getDerivedStateFromProps(props, state){
+   console.log('[App.js] getDerivedStateFromProps', props);
+   return state;
+ }
+//  componentWillMount() {
+//    console.log('[App.js] Inside componentWillMount()');
+//  }
 componentDidMount(){
-  console.log('[App.js] Inside componentDidMount()');
+ console.log('[App.js] Inside componentDidMount');
 }
+//shouldComponentUpdate (nextProps, nextState) {
+//  console.log('[UPDATE App.js] Inside shouldComponentUpdate', nextProps, nextState);
+//  return nextProps.persons !== this.props.persons;
+//}
+//componentWillUpdate ( nextProps, nextState) {
+//  console.log('[UPDATE App.js] Inside componentWillUpdate', nextProps, nextState);
+//}
+//componentDidUpdate () {
+//  console.log('[UPDATE App.js] Inside componentDidUpdate');
+//}
 
-//state = {}
+
 
  nameChangeHandler = (event, id) => {
    const personIndex = this.state.persons.findIndex(p => {
@@ -56,7 +68,7 @@ this.setState({showPersons: !doesShow});
 }
 
   render() {
-    console.log('[App.js] Inside render()');
+    console.log('[App.js] render');
     let persons = null;
 
     if ( this.state.showPersons ) {

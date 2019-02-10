@@ -19,9 +19,10 @@ const cockpit = ( props ) => {
       assignedClasses.push( classes.bold ); // classes = ['red', 'bold']
       
     }
+
     return(
         <div className={classes.Cockpit}>
-            <h1> Hello React App{ props.appTitle}</h1>
+            <h1> Hello React App { props.appTitle}</h1>
         <p className={assignedClasses.join(' ')}>It is easy!!! This is really working :)</p>
         <button 
        className={btnClass}
