@@ -17,16 +17,18 @@ class Person extends Component {
 //const person = (props) => {
    render() {
         console.log('[Person.js] rendering...');
+        const {name, age, children, click}=this.props
         return (
           <div className={classes.Person} >
-              <p onClick= {this.props.click}>
-              I'm {this.props.name} and I am 
-              {this.props.age} years old!</p>
-          <p>{this.props.children}</p>
-          <input 
-          type="text" 
-          onChange={this.props.changed} 
-          value={this.props.name}/>
+              <p onClick= {click}>
+                `I'm ${name} and I am ${age} years old `
+              </p>
+          <p>{children}</p>
+          <input
+            onChange={this.props.changed} 
+            type="text" 
+            value={this.props.name}
+          />
           </div>
           );
       }
