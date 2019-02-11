@@ -7,10 +7,9 @@
     padding: 16px;
     text-align: center;
 }
-/* one of possibilities to do that
+/*one of possibilities to do that*/
  @media (min-width: 500px) {
     .Person{
         width: 450px;
     }
 }
-*/ 
