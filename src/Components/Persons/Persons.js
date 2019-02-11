@@ -1,16 +1,32 @@
-import React from 'react';
+import React, {Component} from 'react';
 import Person from './PersonA/Person';
-const persons = props => {
-    
-    //    console.log('[Persons.js] Inside Constructor', props);
+
+
+class Persons extends Component {
+  //  static getSDerivedStateFromProps(props, state){
+    //console.log('[Person.js] getSDerivedStateFromProps');
+      //return state;
+  //  }
+    shouldComponentUpdate(nextProps, nextState){
+      console.log('[Persons.js] shouldComponentUpdate');
+      return true;
+    }
+    getSnapshotBeforeUpdate(prevProps, prevState){
+      console.log('[Persons.js] getSnapshotBeforeUpdate');
+      return {message: 'Snapshot!'};
+    }
+     componentDidUpdate (prevProps, prevState, Snapshot) {
+       console.log('[Persons.js] componentDidUpdate');
+       console.log(Snapshot);
+    }
+    render()  {
+      // console.log('[Persons.js] Inside Constructor');
         
-   //   }
+     
   //    componentWillMount() {
   //      console.log('[Persons.js] Inside componentWillMount()');
   //    }
-  //  componentDidMount(){
-  //    console.log('[Persons.js] Inside componentDidMount()');
-  //  }
+  // 
   //  componentWillReceiveProps (nextProps) {
   //      console.log('[UPDATE Persons.js] Inside componentWillReceiveProps', nextProps);
   //  }
@@ -21,22 +37,21 @@ const persons = props => {
   //  componentWillUpdate ( nextProps, nextState) {
   //      console.log('[UPDATE Persons.js] Inside componentWillUpdate', nextProps, nextState);
   //  }
-  //  componentDidUpdate () {
-  //      console.log('[UPDATE Persons.js] Inside componentDidUpdate');
-  //  }
+ 
 
     console.log('[Persons.js] rendering...');
    
-    return props.persons.map((person, index) => {
+    return this.props.persons.map((person, index) => {
         
       return (
       <Person 
-        click={() => props.clicked(index)}
+        click={() => this.props.clicked(index)}
         name={person.name}
         age={person.age}
         key={person.id}
-        changed = {event => props.changed(event, person.id)}/>);
+        changed = {event => this.props.changed(event, person.id)}/>);
       } );
-};
+    }
+  }
 
-  export default persons;
+  export default Persons;

@@ -21,22 +21,23 @@ state = {
    console.log('[App.js] getDerivedStateFromProps', props);
    return state;
  }
-//  componentWillMount() {
-//    console.log('[App.js] Inside componentWillMount()');
+//componentWillMount() {
+//  console.log('[App.js] Inside componentWillMount()');
 //  }
 componentDidMount(){
  console.log('[App.js] Inside componentDidMount');
 }
-//shouldComponentUpdate (nextProps, nextState) {
-//  console.log('[UPDATE App.js] Inside shouldComponentUpdate', nextProps, nextState);
-//  return nextProps.persons !== this.props.persons;
-//}
+shouldComponentUpdate (nextProps, nextState) {
+ console.log('[ App.js] shouldComponentUpdate', nextProps, nextState);
+ // return nextProps.persons !== this.props.persons;
+ return true;
+}
 //componentWillUpdate ( nextProps, nextState) {
 //  console.log('[UPDATE App.js] Inside componentWillUpdate', nextProps, nextState);
 //}
-//componentDidUpdate () {
-//  console.log('[UPDATE App.js] Inside componentDidUpdate');
-//}
+componentDidUpdate () {
+  console.log('[App.js] componentDidUpdate');
+}
 
 
 
@@ -82,7 +83,7 @@ this.setState({showPersons: !doesShow});
     return (      
       <div className={classes.App}>
  <Cockpit 
- appTitle={this.props.title}
+ appTitle={this.props.appTitle}
 showPersons={this.state.showPersons}
 persons={this.state.persons}
 clicked={this.togglePersonsHandler}/>
