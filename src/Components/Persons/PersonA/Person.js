@@ -21,7 +21,7 @@ class Person extends Component {
         return (
           <div className={classes.Person} >
               <p onClick= {click}>
-                `I'm ${name} and I am ${age} years old `
+                {`I'm ${name} and I am ${age} years old `}
               </p>
           <p>{children}</p>
           <input
